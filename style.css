@@ -1165,14 +1165,14 @@ section {
 }
 
 @media (max-width: 768px) {
-    /* ADICIONANDO UM MARGIN-TOP AO HERO PARA EMPURRAR O CONTEÚDO PARA BAIXO DO HEADER FIXO */
-    .hero {
-        /* Ajustamos o valor para garantir que o conteúdo comece abaixo do cabeçalho */
-        /* A altura do seu cabeçalho é de aproximadamente 100px na versão mobile,
-           então um valor de 100px ou um pouco mais deve resolver. */
+    /* ADICIONANDO UM MARGIN-TOP NO BODY PARA EMPURRAR O CONTEÚDO PARA BAIXO DO HEADER FIXO */
+    body {
+        /* Adicionando um valor de margin-top para criar o espaço inicial */
         margin-top: 100px;
-        /* A altura total da seção hero será 100vh, mas com esse padding, o conteúdo será
-           empurrado para baixo, criando o espaço que você precisa */
+    }
+    .hero {
+        /* Removemos o margin-top e o padding-top da seção hero para evitar o problema de sobreposição */
+        margin-top: 0;
         padding-top: 0;
         padding-bottom: 50px;
     }
