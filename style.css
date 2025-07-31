@@ -1129,8 +1129,17 @@ section {
     
     .about-content,
     .about-stats {
-        transform: none;
-        flex: 1;
+        /* Garante que o container dos cards ocupe 100% da largura disponível */
+        width: 100%; 
+        /* E centraliza o seu conteúdo, que são os cards */
+        display: flex; /* <<< ADICIONE ESTAS LINHAS <<< */
+        flex-direction: column; /* <<< ADICIONE ESTAS LINHAS <<< */
+        align-items: center; /* <<< ADICIONE ESTAS LINHAS <<< */
+    }
+    .stat-item {
+        /* Opcional: Garante que os itens ocupem a largura total do container */
+        width: 100%; /* <<< ADICIONE ESTA LINHA <<< */
+        max-width: 300px; /* Opcional: define uma largura máxima para não ficarem muito grandes em telas maiores */
     }
     
     .services-grid,
