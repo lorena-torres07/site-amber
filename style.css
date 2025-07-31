@@ -149,7 +149,6 @@ p {
     align-items: center;
     /* >>> AJUSTE PRINCIPAL PARA AUMENTAR A ALTURA DO HEADER <<< */
     /* Aumentei o padding vertical de 0.5rem para 1.8rem. */
-    /* Experimente outros valores (ex: 1.5rem, 2rem, 25px, 30px) se desejar mais ou menos altura. */
     padding: 1.8rem 20px;
 }
 
@@ -157,7 +156,6 @@ p {
 .header .nav-brand img {
     /* >>> AJUSTE PARA AUMENTAR A LOGO E AJUDAR NA PERCEPÇÃO DO HEADER MAIOR <<< */
     /* Aumentei a altura da logo de 50px para 70px. */
-    /* Ajuste este valor se sua logo parecer muito grande ou pequena. */
     height: 70px;
     width: auto;  /* Mantém a proporção correta da imagem */
 }
@@ -977,11 +975,106 @@ section {
 }
 
 .footer .footer-brand img {
-  height: 60px; /* Ajuste este valor conforme desejado */
-  width: auto; /* Ou defina uma largura fixa se preferir, mantendo a proporção */
- }
+    height: 60px; /* Ajuste este valor conforme desejado */
+    width: auto; /* Ou defina uma largura fixa se preferir, mantendo a proporção */
+}
 
+/*
+.footer {
+    background: linear-gradient(135deg, var(--deep-blue), var(--dark-gray));
+    color: var(--white);
+    padding: 3rem 0 1rem;
+    position: relative;
+    overflow: hidden;
+}
 
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--orange));
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+}
+
+.footer-brand,
+.footer-links,
+.footer-social {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-brand h3 {
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.footer-brand span {
+    color: var(--orange);
+}
+
+.footer-links h4,
+.footer-social h4 {
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-links ul li a:hover {
+    color: var(--gold);
+    transform: translateX(5px);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-links a:hover {
+    color: var(--gold);
+    background: rgba(201, 167, 77, 0.2);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+}
+*/
 .whatsapp-btn {
     position: fixed;
     bottom: 20px;
@@ -1074,6 +1167,15 @@ section {
 }
 
 @media (max-width: 768px) {
+    /* >>> AJUSTE PARA MAIS ESPAÇAMENTO ENTRE O HEADER E O CONTEÚDO PRINCIPAL <<< */
+    /* Aumenta o padding superior e inferior da seção hero para dar mais "respiro" */
+    .hero {
+        padding-top: 150px; /* Valor sugerido. Ajuste conforme necessário. */
+        padding-bottom: 50px;
+        /* A altura total da seção hero será 100vh, mas com esse padding, o conteúdo será
+           empurrado para baixo, criando o espaço que você precisa */
+    }
+
     .hamburger {
         display: flex;
     }
@@ -1129,17 +1231,20 @@ section {
     
     .about-content,
     .about-stats {
-        /* Garante que o container dos cards ocupe 100% da largura disponível */
-        width: 100%; 
-        /* E centraliza o seu conteúdo, que são os cards */
-        display: flex; /* <<< ADICIONE ESTAS LINHAS <<< */
-        flex-direction: column; /* <<< ADICIONE ESTAS LINHAS <<< */
-        align-items: center; /* <<< ADICIONE ESTAS LINHAS <<< */
+        transform: none;
+        flex: 1;
     }
+    
+    .about-stats {
+        width: 100%; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .stat-item {
-        /* Opcional: Garante que os itens ocupem a largura total do container */
-        width: 100%; /* <<< ADICIONE ESTA LINHA <<< */
-        max-width: 300px; /* Opcional: define uma largura máxima para não ficarem muito grandes em telas maiores */
+        width: 100%;
+        max-width: 300px;
     }
     
     .services-grid,
