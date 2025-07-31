@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initEnhancedScrollAnimations(); // Versão melhorada das animações
     initPortfolioFilter();
-    initContactForm();
+    initContactForm(); // Esta função foi modificada para o WhatsApp
     initCounterAnimation();
     initParallaxEffect();
     initAdvancedHoverEffects(); // Novos efeitos hover
-   
+    
     
     // Adiciona classe ao body quando tudo estiver carregado
     setTimeout(() => {
@@ -162,7 +162,6 @@ function initPortfolioFilter() {
  */
 function initContactForm() {
     const form = document.getElementById('contact-form');
-    const statusDiv = document.getElementById('form-status');
     
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -179,8 +178,8 @@ function initContactForm() {
             return;
         }
         
-        // Simula envio do formulário
-        submitForm(formData);
+        // >>> ALTERAÇÃO CHAVE: CHAMA A FUNÇÃO openWhatsApp APÓS A VALIDAÇÃO <<<
+        openWhatsApp(formData);
     });
     
     // Validação em tempo real
@@ -307,46 +306,53 @@ function clearErrorMessages() {
 }
 
 /**
- * Simula o envio do formulário
+ * >>> NOVA FUNÇÃO PARA ABRIR O WHATSAPP COM A MENSAGEM DO FORMULÁRIO <<<
+ * Esta função é chamada após a validação bem-sucedida do formulário.
  */
-function submitForm(formData) {
+function openWhatsApp(formData) {
+    // Coleta os dados do formulário
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const phone = formData.get('phone');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+
+    // Construção da mensagem pré-preenchida para o WhatsApp
+    // Usamos encodeURIComponent para garantir que os caracteres especiais sejam formatados corretamente para a URL
+    const whatsappMessage = `Olá, Amber! Gostaria de falar sobre os serviços da empresa.
+Meu nome é: ${name}
+Meu e-mail é: ${email}
+Meu telefone é: ${phone || 'Não informado'}
+Assunto: ${subject || 'Não informado'}
+Mensagem: ${message}`;
+    
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Seu número de telefone (DDI+DDD+número)
+    // O número correto é 81 8819-1775, que no formato para link é 558188191775
+    const whatsappNumber = '558188191775'; 
+    
+    // Monta o link completo do WhatsApp
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Abre o link em uma nova aba do navegador
+    window.open(whatsappUrl, '_blank');
+    
+    // Opcional: Limpa o formulário após abrir o WhatsApp
+    document.getElementById('contact-form').reset();
+    
+    // Opcional: Mostra uma mensagem na tela para o usuário, indicando que a aba foi aberta
     const statusDiv = document.getElementById('form-status');
-    const submitButton = document.querySelector('button[type="submit"]');
-    
-    // Estado de carregamento
-    submitButton.textContent = 'Enviando...';
-    submitButton.disabled = true;
-    
-    // Simula delay de envio
-    setTimeout(() => {
-        try {
-            // Aqui você integraria com seu backend
-            console.log('Dados do formulário:', Object.fromEntries(formData));
-            
-            // Simula sucesso
-            statusDiv.className = 'form-status success';
-            statusDiv.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
-            
-            // Limpa o formulário
-            document.getElementById('contact-form').reset();
-            
-        } catch (error) {
-            // Trata erro
-            statusDiv.className = 'form-status error';
-            statusDiv.textContent = 'Erro ao enviar mensagem. Tente novamente.';
-        } finally {
-            // Restaura botão
-            submitButton.textContent = 'Enviar Mensagem';
-            submitButton.disabled = false;
-            
-            // Remove mensagem após 5 segundos
-            setTimeout(() => {
-                statusDiv.className = 'form-status';
-                statusDiv.textContent = '';
-            }, 5000);
-        }
-    }, 1500);
+    if (statusDiv) {
+        statusDiv.className = 'form-status success';
+        statusDiv.textContent = 'Estamos te redirecionando para o WhatsApp...';
+        setTimeout(() => {
+            statusDiv.textContent = '';
+            statusDiv.className = 'form-status';
+        }, 5000); // A mensagem desaparece após 5 segundos
+    }
 }
+
 
 /**
  * ANIMAÇÃO DOS CONTADORES
