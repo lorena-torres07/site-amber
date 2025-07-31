@@ -1175,6 +1175,10 @@ section {
         /* A altura total da seção hero será 100vh, mas com esse padding, o conteúdo será
            empurrado para baixo, criando o espaço que você precisa */
     }
+    /* >>> AJUSTE ADICIONAL PARA O HEADER NO MOBILE <<< */
+    .header .container {
+        padding: 10px 20px; /* Valor ajustado para garantir um 'respiro' na barra do header */
+    }
 
     .hamburger {
         display: flex;
