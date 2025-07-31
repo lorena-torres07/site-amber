@@ -147,15 +147,13 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* >>> AJUSTE PRINCIPAL PARA AUMENTAR A ALTURA DO HEADER <<< */
-    /* Aumentei o padding vertical de 0.5rem para 1.8rem. */
+    /* AJUSTE PRINCIPAL PARA AUMENTAR A ALTURA DO HEADER */
     padding: 1.8rem 20px;
 }
 
-/* ===== NOVA REGRA PARA CONTROLAR A LOGO ===== */
+/* NOVA REGRA PARA CONTROLAR A LOGO */
 .header .nav-brand img {
-    /* >>> AJUSTE PARA AUMENTAR A LOGO E AJUDAR NA PERCEPÇÃO DO HEADER MAIOR <<< */
-    /* Aumentei a altura da logo de 50px para 70px. */
+    /* AJUSTE PARA AUMENTAR A LOGO E AJUDAR NA PERCEPÇÃO DO HEADER MAIOR */
     height: 70px;
     width: auto;  /* Mantém a proporção correta da imagem */
 }
@@ -1167,15 +1165,15 @@ section {
 }
 
 @media (max-width: 768px) {
-    /* >>> AJUSTE PARA MAIS ESPAÇAMENTO ENTRE O HEADER E O CONTEÚDO PRINCIPAL <<< */
-    /* Aumenta o padding superior e inferior da seção hero para dar mais "respiro" */
+    /* ADICIONANDO UM MARGIN-TOP AO HERO PARA EMPURRAR O CONTEÚDO PARA BAIXO DO HEADER FIXO */
     .hero {
-        padding-top: 150px; /* Valor sugerido. Ajuste conforme necessário. */
+        /* Ajustamos o valor para garantir que o conteúdo comece abaixo do cabeçalho */
+        margin-top: 100px;
+        /* Remover o padding superior para não empurrar ainda mais o conteúdo */
+        padding-top: 0;
         padding-bottom: 50px;
-        /* A altura total da seção hero será 100vh, mas com esse padding, o conteúdo será
-           empurrado para baixo, criando o espaço que você precisa */
     }
-    /* >>> AJUSTE ADICIONAL PARA O HEADER NO MOBILE <<< */
+    /* AJUSTE ADICIONAL PARA O HEADER NO MOBILE */
     .header .container {
         padding: 10px 20px; /* Valor ajustado para garantir um 'respiro' na barra do header */
     }
