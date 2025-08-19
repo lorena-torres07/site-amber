@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPortfolioFilter();
     initContactForm(); // Esta função foi modificada para o WhatsApp
     initCounterAnimation();
+    
     initParallaxEffect();
     initAdvancedHoverEffects(); // Novos efeitos hover
     
